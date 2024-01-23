@@ -1,0 +1,139 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage[T2A]{fontenc}
+\usepackage[cp1251]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{graphicx}
+
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage[unicode, hidelinks]{hyperref}
+\usepackage{textcmds}
+
+\usepackage[
+    a4paper, mag=1000,
+    left=2.5cm, right=1.5cm, top=2cm, bottom=2cm, bindingoffset=0cm,
+    headheight=0cm, footskip=1cm, headsep=0cm
+]{geometry}
+
+\usepackage{tempora}
+
+\usepackage{chngcntr} % equation counter manipulations
+
+% reset equation counter at each section
+\counterwithin*{equation}{section}
+\counterwithin*{equation}{section}
+
+\graphicspath{{images/}}
+
+\usepackage{cases}
+
+\begin{document}
+
+\tableofcontents
+
+\newpage
+
+\section{Глава 1}
+
+\subsection{Интерполяционный многочлен в общем виде (постановка задачи, вывод, замечания)}
+
+\subsubsection{Постановка задачи}
+
+Пусть задана некоторая функция $f$ дискретным набором своих значений:
+
+\begin{center}
+    \includegraphics[width=80mm]{1_1_1.png}
+\end{center}
+
+Требуется построить (указать) некоторую определённую и непрерывную функцию
+$g(x)$, такую, чтобы выполнялись следующие равенства:
+
+\begin{align*} \tag{1} \label{eq:1_1}
+    g(x_k) = f_k, \;\;\; \forall k = \overline{0, n}
+\end{align*}
+
+\begin{center}
+    \includegraphics[width=100mm]{1_1_2.png}
+\end{center}
+
+\textbf{Замечание:}
+\smallskip
+
+Очевидно, что задача интерполяции в указанной выше формулировке имеет бесконечно
+много решений.
+\bigskip
+
+\textbf{Определение 1:}
+\smallskip
+
+Точки $x_0, x_1, \dots, x_n$ будем называть узлами интерполяции (приближения).
+\bigskip
+
+\textbf{Определение 2:}
+\smallskip
+
+Функцию $f$ будем называть интерполируемой (приближаемой) функцией.
+\bigskip
+
+\textbf{Определение 3:}
+\smallskip
+
+Функцию $g(x)$ будем называть интерполирующей (интерполяционной, приближающей) функцией
+или интерполянтой.
+\bigskip
+
+\textbf{Определение 4:}
+\smallskip
+
+Выполнение равенств \ref{eq:1_1} будем называть главным условием интерполяции (ГУИ).
+
+\subsubsection{Вывод}
+
+В данном параграфе покажем, что алгебраический многочлен степени $n$ в случае
+попарной различности узлов интерполяции может быть взят в качестве искомой
+интерполянты в задаче интерполяции, такой многочлен будет задан единственным образом.
+\bigskip
+
+Другими словами, потребуем, чтобы алгебраический многочлен
+
+\begin{align*} \tag{2} \label{eq:2_1}
+    P_n(x) = a_nx^n + a_{n - 1}x^{n - 1} + \dots + a_1x + a_0
+\end{align*}
+
+удовлетворял ГУИ, а именно, чтобы имели место следующие равенства:
+
+\begin{align*} \tag{3} \label{eq:2_2}
+    \includegraphics[width=100mm]{1_2_1.png}
+\end{align*}
+
+По своей алгебраической природе равенства \ref{eq:2_2} предсавляют собой систему
+алгебраических линейных уравнений $(n + 1) x (n + 1)$ относительно
+неизвестных $a_n, a_{n - 1}, \dots, a_0$.
+\bigskip
+
+В этой связи, чтобы СЛАУ \ref{eq:2_2} имело единственное решение, необходимо, чтобы
+его главный определитель был отличен от 0.
+\bigskip
+
+\begin{center}
+    \includegraphics[width=100mm]{1_2_2.png}
+
+    Причём должно выполняться условие попарного различия
+    узлов интерполяции.
+
+    \begin{align*} \tag{4} \label{eq:2_3}
+        x_i \neq x_j \;\;\; \forall i \neq j \;\;\;
+    \end{align*}
+\end{center}
+
+Из вышеописанного следует, что, если выполняется условие \ref{eq:2_3}, то $\Delta_{(3)}
+\neq 0$ и СЛАУ \ref{eq:2_2} будет иметь единственное решение.
+
+Таким образом, решив СЛАУ \ref{eq:2_2} любым подходящим численным методом, мы узнаем $a_0, \dots, a_n$.
+\bigskip
+
+Подставив найденные коэффициенты в \ref{eq:2_1} мы получим явную формулу искомой интерполянты.
+
+
+\end{document}
